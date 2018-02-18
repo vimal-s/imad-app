@@ -94,15 +94,8 @@ app.get('/', function (req, res) {
 
 app.get('/:articleName', function (req, res) {
     //articleName = article-one
+    var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
-});
-
-app.get('/article-2', function (req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-3', function (req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-3'));
 });
 
 app.get('/ui/style.css', function (req, res) {
