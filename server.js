@@ -20,7 +20,7 @@ var articles = {
                         This is the content for my first article.Bingo!!!!!!
                     </p>`
     },
-    'article-2': {
+    'article-TWO': {
         title: 'Article Two | VIMAL',
         date: 'Feb 18,2018',
         heading: 'Article Two',
