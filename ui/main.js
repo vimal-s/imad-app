@@ -23,7 +23,7 @@ button.onclick = function () {
 	//counter = counter + 1;
 	
 	//Make a request
-	request.open('GET', 'http://127.0.0.1:80/counter', true);
+	request.open('GET', 'http://vimalsingh992.imad.hasura-app.io/counter', true);
 	request.send(null);
 };
 
