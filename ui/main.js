@@ -12,6 +12,10 @@ button.onclick = function () {
 		if (request.readyState === XMLHttpRequest.DONE) {
 			//Take some action
 			if (request.status === 200) {
+			    var counter = request.responseText;
+				var span = document.getElementById('count');
+				span.innerHTML = counter.toString();
+			
 			}
 		}
 		//Not done yethttp://localhost/
@@ -20,7 +24,7 @@ button.onclick = function () {
 	//counter = counter + 1;
 	
 	//Make a request
-	request.open('GET', 'http://localhost/counter', true);
+	request.open('GET', 'http://vimalsingh992.imad.hasura-app.io/counter', true);
 	request.send(null);
 };
 
