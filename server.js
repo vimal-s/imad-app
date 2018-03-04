@@ -150,6 +150,7 @@ app.post('/login', function (req, res) {
                    res.send(403).send('INVALIDDDDDDDD');
                }
            }
+            res.send('User successfully created: ' + username);
        }
    }); 
 });
