@@ -24,7 +24,7 @@ submit.onclick = function () {
 				    alert('server error');
 				}
 			}
-		}
+		
 		//Not done yethttp://localhost/
 	};
 	//Render the variable in the correct span
