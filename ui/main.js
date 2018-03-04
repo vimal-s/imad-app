@@ -45,7 +45,7 @@ submit.onclick = function () {
 				    alert('login successfull');
 				} else if (request.status === 403) {
 				    alert('incorrect');
-				} else if (request.status == 500) {
+				} else if (request.status === 500) {
 				    alert('server error');
 				}
 			}
