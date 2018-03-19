@@ -163,7 +163,7 @@ app.post('/login', function (req, res) {
                    //res.send('Credentials correct!');
                    //for app
                    res.setHeader('Content-Type', 'application/json');
-                   res.send(JSON.parse('{message":"You have successfully logged in}'));
+                   res.send(JSON.parse('{"message":"You have successfully logged in"}'));
                    
                    
                } else {
