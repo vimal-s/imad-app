@@ -143,15 +143,16 @@ app.post('/login', function (req, res) {
    var password = req.body.password;
    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err, result) {
        if (err) {
-           //res.status(500).send(err.toString());
            res.setHeader('Content-Type', 'application/json');
-           res.status(500).send(JSON.stringify({"error":err.toString()}));
+           res.status(500).send(err.toString());
+           //Change or not
+           //res.status(500).send(JSON.stringify({"error":err.toString()}));
        } else {
            if (result.rows.length === 0) {
                //res.status(403).send('username/password is invalid'); //.send(403)
                //For app
                res.setHeader('Content-Type', 'application/json');
-               res.status(403).send(JSON.parse('{"error": "username/password is invalid"}'));
+               res.status(403).send(JSON.stringify({"error": "username/password is invalid"}));
            } else {
                //Password matching here
                var dbString = result.rows[0].password;
@@ -165,14 +166,14 @@ app.post('/login', function (req, res) {
                    //res.send('Credentials correct!');
                    //for app
                    res.setHeader('Content-Type', 'application/json');
-                   res.send(JSON.parse('{"message":"You have successfully logged in"}'));
+                   res.send(JSON.stringify({"message":"You have successfully logged in"}));
                    
                    
                } else {
                    //res.status(403).send('INVALIDDDDDDDD');
                    //For app
                    res.setHeder('Content-Type', 'application/json');
-                   res.status(403).send(JSON.parse('{"error": "username/password is invalid server"}'));
+                   res.status(403).send(JSON.stringify({"error": "username/password is invalid server"}));
                }
            }
            // res.send('User successfully created: ' + username);
