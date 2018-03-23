@@ -223,18 +223,21 @@ app.get('/submit-name', function(req, res) {//URL: /submit-name?name=xxxxx
 	res.send(JSON.stringify(names));
 });
 
-
-app.get('/articles/:articleName', function (req, res) {		//Doubt here
+//articles/:articleName
+app.get('/get-articles', function (req, res) {		//Doubt here
     //articleName = article-one
     pool.query("SELECT * FROM article WHERE title = $1" , [req.params.articleName], function (err, result) {
         if (err) {
+            console.error('Error executing query', err.stack);
             res.status(500).send(err.toString());
         } else {
             if (result.rows.length === 0) {
                 res.status(404).send('Article not fnd');
             } else {
                 var articleData = result.rows[0];
-                res.send(createTemplate(articleData));
+                res.setHeader('Content-Type', 'application/json');
+                //res.send(createTemplate(articleData));
+                res.send(JSON.stringify(result.rows));
             }
         }
     });
