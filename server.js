@@ -152,7 +152,7 @@ app.post('/login', function (req, res) {
                //res.status(403).send('username/password is invalid'); //.send(403)
                //For app
                res.setHeader('Content-Type', 'application/json');
-               res.status(403).send(JSON.stringify({"error": "username/password is invalid"}));
+               res.status(403).send(JSON.parse('{"error": "username/password is invalid"}'));
            } else {
                //Password matching here
                var dbString = result.rows[0].password;
@@ -166,14 +166,14 @@ app.post('/login', function (req, res) {
                    //res.send('Credentials correct!');
                    //for app
                    res.setHeader('Content-Type', 'application/json');
-                   res.send(JSON.stringify({"message":"You have successfully logged in"}));
+                   res.send(JSON.parse('{"message":"You have successfully logged in"}'));
                    
                    
                } else {
                    //res.status(403).send('INVALIDDDDDDDD');
                    //For app
                    res.setHeder('Content-Type', 'application/json');
-                   res.status(403).send(JSON.stringify({"error": "username/password is invalid server"}));
+                   res.status(403).send(JSON.parse('{"error": "username/password is invalid server"}'));
                }
            }
            // res.send('User successfully created: ' + username);
@@ -226,7 +226,7 @@ app.get('/submit-name', function(req, res) {//URL: /submit-name?name=xxxxx
 //articles/:articleName
 app.get('/get-articles', function (req, res) {		//Doubt here
     //articleName = article-one
-    pool.query("SELECT * FROM article WHERE title = $1" , [req.params.articleName], function (err, result) {
+    pool.query("SELECT * FROM article", function (err, result) {
         if (err) {
             console.error('Error executing query', err.stack);
             res.status(500).send(err.toString());
